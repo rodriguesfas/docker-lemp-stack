@@ -44,4 +44,8 @@ Cheat Sheet Docker
 
 ### Delete all images
 
+    docker-compose down -v --rmi all --remove-orphans
+
+or
+
     docker rmi -f $(docker images -aq)

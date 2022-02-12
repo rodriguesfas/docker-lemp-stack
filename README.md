@@ -22,7 +22,10 @@
 
     sudo nano /etc/hosts
 
-    127.0.0.1  realm.dev
+    127.0.0.1  realm.test
+    127.0.0.1  phpmyadmin.test
+
+edit files ```.docker/nginx/conf.d/php.conf``` and ```.docker/nginx/conf.d/phpmyadmin.conf```
 
 user: root
 password: root
