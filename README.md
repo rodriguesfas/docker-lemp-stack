@@ -13,7 +13,19 @@
 
     docker-compose up -d
 
-open localhost in browser.
+- open localhost in browser.
+
+- open phpmyadmin in browser: localhost:8080
+
+
+>>> Warning, edite hosts file
+
+    sudo nano /etc/hosts
+
+    127.0.0.1  realm.dev
+
+user: root
+password: root
 
 ## Tutorial
 

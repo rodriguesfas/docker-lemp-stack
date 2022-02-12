@@ -4,9 +4,17 @@ Cheat Sheet Docker
 
 ## Commands Docker
 
-### Docker Compose
+### Docker Up
 
     docker-compose up -d
+
+## Docker Down
+
+    docker-compose down -v
+
+## Docker Restart
+
+    docker-compose restart
 
 ### View containers current running.
 
@@ -29,3 +37,11 @@ Cheat Sheet Docker
     docker-compose logs -f
 
     docker-compose logs -f nginx
+
+### Delete images
+
+    docker rmi <image> -f
+
+### Delete all images
+
+    docker rmi -f $(docker images -aq)
