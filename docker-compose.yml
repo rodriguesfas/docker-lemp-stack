@@ -5,13 +5,19 @@ services:
 
   # Nginx Service
   nginx:
-    image: nginx:1.21-alpine
+    build: ./.docker/nginx
     ports:
       - 80:80
+      - 443:443
+    networks:
+      default:
+        aliases:
+          - php.test
     volumes:
       - ./src:/var/www/php
       - ./.docker/nginx/conf.d:/etc/nginx/conf.d
       - phpmyadmindata:/var/www/phpmyadmin
+      - ./.docker/nginx/certs:/etc/nginx/certs
     depends_on:
       - php
       - phpmyadmin
@@ -53,6 +59,18 @@ services:
     depends_on:
       mysql:
         condition: service_healthy
+
+  # Ngrok Service
+  ngrok:
+    image: wernight/ngrok:latest
+    ports:
+      - 4040:4040
+    environment:
+      NGROK_PROTOCOL: http
+      NGROK_PORT: nginx:443
+      NGROK_AUTH: ${NGROK_AUTH}
+    depends_on:
+      - nginx
 
 # Volumes
 volumes:
